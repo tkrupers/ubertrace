@@ -10,6 +10,7 @@
     "@feathersjs/express": "^1.2.7",
     "@feathersjs/feathers": "^3.2.3",
     "@feathersjs/socketio": "^3.2.6",
+    "body-parser": "^1.18.3",
     "feathers-memory": "^2.2.0"
   },
   "devDependencies": {

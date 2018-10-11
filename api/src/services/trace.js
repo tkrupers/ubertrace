@@ -23,14 +23,17 @@ class TraceService {
     return location;
   }
 
-  async update(id, data, params) {
-    const updated = await this.locations.filter(l => l.id === id).map(l => ({ ...l, lang: data.lang, long: data.long }));
-    return updated;
+  async update(bla, data, params) {
+    const { query: { id } } = params;
+    try {
+      const updated = await this.locations.filter(l => l.id === parseInt(id), 10).map(l => ({ ...l, lang: data.lang, long: data.long }));
+
+      console.log(this.locations, id);
+      return updated;
+    } catch (e) {
+      console.error(e);
+    }
   }
-
-  async patch(id, data, params) {}
-
-  async remove(id, params) {}
 }
 
 export default TraceService;
