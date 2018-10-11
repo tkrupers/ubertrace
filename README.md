@@ -11,8 +11,8 @@ Hackathon real time track and trace app
 
 ## API 
 
-- [ ] express setup
-- [ ] feathers setup
+- [x] express setup
+- [x] feathers setup
 - [ ] driver location route
 - [ ] orders geolocation route
 - [ ] eta op basis van AH busje
