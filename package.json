@@ -1,0 +1,8 @@
+{
+  "name": "ubertrace",
+  "version": "1.0.0",
+  "main": "index.js",
+  "repository": "https://github.com/tkrupers/ubertrace.git",
+  "author": "Thomas Krupers <thomaskrupers@Thomass-MacBook-Pro.local>",
+  "license": "MIT"
+}
