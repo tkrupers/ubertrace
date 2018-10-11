@@ -1,7 +1,8 @@
+import TrackService from './services/track';
+
 const feathers = require('@feathersjs/feathers');
 const express = require('@feathersjs/express');
 const socketio = require('@feathersjs/socketio');
-
 const memory = require('feathers-memory');
 
 const app = express(feathers());
@@ -20,12 +21,8 @@ app.use('/messages', memory({
 
 app.use(express.errorHandler());
 
-app.service('messages').create({
-  text: 'Message created on server',
-}).then(message => console.log('Created message', message));
+app.use('/api/track', new TrackService());
 
-const port = 3030;
+const server = app.listen(3030);
 
-app.listen(port, () => {
-  console.log(`Feathers server listening on port ${port}`);
-});
+server.on('listening', () => console.log('Feathers application started'));

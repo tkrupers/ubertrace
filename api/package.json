@@ -4,7 +4,7 @@
   "main": "index.js",
   "license": "MIT",
   "scripts": {
-    "start": "node --harmony src/app.js"
+    "start": "nodemon --exec babel-node src/app.js"
   },
   "dependencies": {
     "@feathersjs/express": "^1.2.7",
@@ -13,10 +13,12 @@
     "feathers-memory": "^2.2.0"
   },
   "devDependencies": {
+    "babel-node": "^6.5.3",
     "eslint": "^5.3.0",
     "eslint-config-airbnb": "17.1.0",
     "eslint-plugin-import": "^2.14.0",
     "eslint-plugin-jsx-a11y": "^6.1.1",
-    "eslint-plugin-react": "^7.11.0"
+    "eslint-plugin-react": "^7.11.0",
+    "nodemon": "^1.18.4"
   }
 }
