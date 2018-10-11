@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { DivIconMarkerExample } from './components/divicon-marker-example';
 
 class App extends Component {
     state = {
@@ -17,13 +18,7 @@ class App extends Component {
     }
 
     render() {
-        const { messages } = this.state;
-        return (
-            <div className="app">
-                <h1>Messages</h1>
-                {messages};
-            </div>
-        );
+        return <DivIconMarkerExample />;
     }
 }
 
