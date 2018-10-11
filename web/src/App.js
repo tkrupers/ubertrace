@@ -7,7 +7,7 @@ class App extends Component {
 
     async componentDidMount() {
         try {
-        const response = await fetch('/api/track');
+        const response = await fetch('/api/trace');
         const messages = await response.json();
         this.setState({ messages });
 
