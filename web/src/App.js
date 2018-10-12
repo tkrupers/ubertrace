@@ -6,6 +6,9 @@ import Modal from 'react-modal';
 import { RatingComponent } from './components/rating/rating';
 import './App.css';
 
+const CSSTransitionGroup = React.addons.CSSTransitionGroup;
+require('./app.scss');
+
 Modal.setAppElement('#root');
 
 const loader = require('./components/assets/loadering.gif');
@@ -61,7 +64,7 @@ class App extends Component {
                             margin: 0,
                         }}
                     >
-                        <img src={loader} alt="loader"/>
+                        <img src={loader} alt="loader" />
                     </figure>
                 </>
             );
@@ -79,15 +82,15 @@ class App extends Component {
                         [52.45, 4.66],
                     ]}
                 />
-                <Modal
-                    isOpen={this.state.modalIsOpen}
-                    onRequestClose={this.closeModal}
-                    contentLabel="Example Modal"
+                <CSSTransitionGroup
+                    transitionName="slide"
+                    transitionAppear={this.state.modalIsOpen}
+                    transitionAppearTimeout={500}
+                    transitionEnterTimeout={300}
+                    transitionLeaveTimeout={300}
                 >
-                    <button onClick={this.closeModal}>Close Modal</button>
-
                     <RatingComponent />
-                </Modal>
+                </CSSTransitionGroup>
             </div>
         );
     }
