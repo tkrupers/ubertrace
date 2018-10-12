@@ -12,8 +12,10 @@ export default class Tracker {
     fetch = (url, method, body) =>
         fetch(url, {
             method,
+            mode: 'cors',
+
             cache: 'no-cache', // *default, no-cache, reload, force-cache, only-if-cached
-            credentials: 'same-origin', // include, same-origin, *omit
+            credentials: 'include', // include, same-origin, *omit
             headers: {
                 'Content-Type': 'application/json; charset=utf-8',
             },

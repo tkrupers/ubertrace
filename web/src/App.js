@@ -53,7 +53,14 @@ class App extends Component {
                     ? 'https://ubertrace-api-npsrvduhwn.now.sh/api/trace'
                     : '/api/trace';
 
-            const response = await fetch(url);
+            const response = await fetch(url, {
+                mode: 'cors',
+                cache: 'no-cache', // *default, no-cache, reload, force-cache, only-if-cached
+                credentials: 'include', // include, same-origin, *omit
+                headers: {
+                    'Content-Type': 'application/json; charset=utf-8',
+                },
+            });
             const messages = await response.json();
             this.setState({ messages });
         } catch (e) {
