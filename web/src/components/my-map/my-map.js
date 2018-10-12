@@ -1,11 +1,13 @@
-import React, { Component, Fragment } from 'react';
+import React, { Fragment } from 'react';
 import { Map, TileLayer, CircleMarker } from 'react-leaflet';
 import { AHVan } from '../ah-van/ah-van';
 
 const MyMarkersList = ({ markers }) => {
-    const items = markers.map((latLng, index) => (
-        <CircleMarker key={index} center={latLng} radius={30} />
-    ));
+    const items = markers
+        .slice(1)
+        .map((latLng, index) => (
+            <CircleMarker key={index} center={latLng} radius={30} />
+        ));
     return <Fragment>{items}</Fragment>;
 };
 
