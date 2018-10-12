@@ -32,9 +32,8 @@ class App extends Component {
 
     async componentDidMount() {
         try {
-            const id = await this.tracker.createTracker();
-
-            this.tracker.startTracker(id);
+            this.tracker.createTracker();
+            this.tracker.startTracker(1);
 
             const response = await fetch('/api/trace');
             const messages = await response.json();

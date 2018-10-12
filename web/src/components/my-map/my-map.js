@@ -3,7 +3,7 @@ import { Map, TileLayer, CircleMarker, Polyline } from 'react-leaflet';
 import { AHVan } from '../ah-van/ah-van';
 
 // https://stackoverflow.com/a/27943
-function getDistanceFromLatLonInKm(lat1, lon1, lat2, lon2) {
+export function getDistanceFromLatLonInKm(lat1, lon1, lat2, lon2) {
     var R = 6371; // Radius of the earth in km
     var dLat = deg2rad(lat2 - lat1); // deg2rad below
     var dLon = deg2rad(lon2 - lon1);
@@ -18,7 +18,7 @@ function getDistanceFromLatLonInKm(lat1, lon1, lat2, lon2) {
     return d;
 }
 
-function deg2rad(deg) {
+export function deg2rad(deg) {
     return deg * (Math.PI / 180);
 }
 
