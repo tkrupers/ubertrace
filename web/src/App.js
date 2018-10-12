@@ -6,6 +6,9 @@ import Modal from 'react-modal';
 import { RatingComponent } from './components/rating/rating';
 import './App.css';
 
+
+import { Schedule } from './components/schedule/schedule';
+
 Modal.setAppElement('#root');
 
 const loader = require('./components/assets/loadering.gif');
@@ -79,6 +82,7 @@ class App extends Component {
                         [52.45, 4.66],
                     ]}
                 />
+                <Schedule />
                 <Modal
                     isOpen={this.state.modalIsOpen}
                     onRequestClose={this.closeModal}
