@@ -17,7 +17,7 @@ export default class Tracker {
         });
 
     createTracker() {
-       return this.fetch('/api/trace', 'POST', JSON.stringify(this.mock[0]));
+       return setTimeout(() => this.fetch('/api/trace', 'POST', JSON.stringify(this.mock[0])), 1000);
     }
 
     startTracker(id) {
