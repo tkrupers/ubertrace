@@ -4,7 +4,7 @@ import Tracker from './components/tracker/tracker';
 import { subscribeToTracker } from './api';
 import Modal from 'react-modal';
 import { RatingComponent } from './components/rating/rating';
-import { DriverInformation } from './components/rating/driverInformation';
+
 import { Schedule } from './components/schedule/schedule';
 
 import './App.css';
@@ -155,7 +155,6 @@ class App extends Component {
                         />
                     </button>
 
-                    <DriverInformation />
                     <RatingComponent />
                     <button className="send-button" onClick={this.closeModal}>
                         versturen
