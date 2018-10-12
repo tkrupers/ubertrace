@@ -5,14 +5,12 @@ import { subscribeToTracker } from './api';
 import Modal from 'react-modal';
 import { RatingComponent } from './components/rating/rating';
 import { DriverInformation } from './components/rating/driverInformation';
-import './App.css';
 
-require('./app.scss');
+import './App.css';
 
 Modal.setAppElement('#root');
 
 const loader = require('./components/assets/loadering.gif');
-
 const customStyles = {
     content: {
         top: '40px',
@@ -43,56 +41,55 @@ class App extends Component {
         modalIsOpen: false,
     };
 
-    // async componentDidMount() {
-    //     try {
-    //         const id = await this.tracker.createTracker();
+    async componentDidMount() {
+        try {
+            this.tracker.createTracker();
+            this.tracker.startTracker(1);
 
-    //         this.tracker.startTracker(id);
-
-    //         const response = await fetch('/api/trace');
-    //         const messages = await response.json();
-    //         this.setState({ messages });
-    //     } catch (e) {
-    //         console.error(e);
-    //     }
-    // }
+            const response = await fetch('/api/trace');
+            const messages = await response.json();
+            this.setState({ messages });
+        } catch (e) {
+            console.error(e);
+        }
+    }
 
     render() {
         const { tracker } = this.state;
         const [id, long, lang] = Object.values(tracker);
 
-        // if (!long && !lang) {
-        //     return (
-        //         <>
-        //             <figure
-        //                 style={{
-        //                     position: 'absolute',
-        //                     zIndex: '1',
-        //                     background: 'rgba(255,255,255,0.5)',
-        //                     width: '100%',
-        //                     height: '100%',
-        //                     textAlign: 'center',
-        //                     margin: 0,
-        //                 }}
-        //             >
-        //                 <img src={loader} alt="loader" />
-        //             </figure>
-        //         </>
-        //     );
-        // }
+        if (!long && !lang) {
+            return (
+                <>
+                    <figure
+                        style={{
+                            position: 'absolute',
+                            zIndex: '1',
+                            background: 'rgba(255,255,255,0.5)',
+                            width: '100%',
+                            height: '100%',
+                            textAlign: 'center',
+                            margin: 0,
+                        }}
+                    >
+                        <img src={loader} alt="loader" />
+                    </figure>
+                </>
+            );
+        }
 
         return (
             <div>
                 <button onClick={this.openModal}>Open Modal</button>
 
-                {/* <MyMap
+                <MyMap
                     latLngArr={[
                         [lang, long],
                         [52.4, 4.7],
                         [52.42, 4.75],
                         [52.45, 4.66],
                     ]}
-                /> */}
+                />
                 <Modal
                     isOpen={this.state.modalIsOpen}
                     onRequestClose={this.closeModal}
