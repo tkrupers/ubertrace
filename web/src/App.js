@@ -16,7 +16,7 @@ class App extends Component {
     state = {
         messages: [],
         tracker: {},
-        isOpen: false
+        isOpen: false,
     };
 
     async componentDidMount() {
