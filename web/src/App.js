@@ -8,6 +8,7 @@ class App extends Component {
         return (
             <Router>
                 <MyMap
+                    path="/"
                     latLngArr={[
                         [51.52, -0.05],
                         [51.5, -0.1],
