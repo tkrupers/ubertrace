@@ -63,10 +63,10 @@ class App extends Component {
                     >
                         <img src={loader} alt="loader"/>
                     </figure>
-                    <MyMap latLngArr={[[50.4, 4.7]]} />
                 </>
             );
         }
+
         return (
             <div>
                 <button onClick={this.openModal}>Open Modal</button>
