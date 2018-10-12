@@ -1,0 +1,62 @@
+.schedule {
+    padding-left: 60px;
+}
+
+.schedule__dot-line {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    width: 10px;
+    margin-top: 50px;
+}
+
+.schedule__dot {
+    background-color: #3b9fe2;
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    position: relative;
+}
+
+.schedule__dot--grey {
+    background-color: #ccc;
+}
+
+.schedule__dot--black {
+    background-color: #1e1e1e;
+}
+
+.schedule__dot--square {
+    border-radius: 0;
+}
+
+.schedule__line {
+    background-color: #3b9fe2;
+    width: 1px;
+    height: 70px;
+}
+
+.schedule__line--half {
+    height: 35px;
+}
+
+.schedule__line--grey {
+    background-color: #ccc;
+}
+
+.schedule__info {
+    width: calc(100vw - 100px);
+    position: absolute;
+    left: 30px;
+    top: -10px;
+}
+
+.schedule__paragraph {
+    margin: 0;
+    line-height: 1.4;
+}
+
+.schedule__paragraph--time {
+    color: #ccc;
+    font-size: 0.8rem;
+}
