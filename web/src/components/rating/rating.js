@@ -27,7 +27,7 @@ class Stars extends React.Component {
     render() {
         return (
             <div style={{ flexDirection: 'row', padding: '44px 0' }}>
-                <p>wat vond je van de bezorger?</p>
+                <p style={{ fontSize: '24px' }}>wat vond je van de bezorger?</p>
                 {stars.map(s => (
                     <Star
                         key={s}
@@ -49,6 +49,7 @@ export const RatingComponent = () => {
                 flexDirection: 'column',
                 width: '100%',
                 textAlign: 'center',
+                marginBottom: '32px',
             }}
         >
             <Stars />
