@@ -13,7 +13,7 @@ const MyMarkersList = ({ markers }) => {
 
 export const MyMap = ({ latLngArr }) => {
     return (
-        <Map center={[51.505, -0.09]} zoom={13} style={{ height: '500px' }}>
+        <Map center={latLngArr[0]} zoom={11} style={{ height: '500px' }}>
             <TileLayer
                 attribution="&amp;copy <a href=&quot;http://osm.org/copyright&quot;>OpenStreetMap</a> contributors"
                 url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
