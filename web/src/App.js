@@ -4,14 +4,24 @@ import Tracker from './components/tracker/tracker';
 import { subscribeToTracker } from './api';
 import Modal from 'react-modal';
 import { RatingComponent } from './components/rating/rating';
+import { DriverInformation } from './components/rating/driverInformation';
 import './App.css';
 
-const CSSTransitionGroup = React.addons.CSSTransitionGroup;
 require('./app.scss');
 
 Modal.setAppElement('#root');
 
 const loader = require('./components/assets/loadering.gif');
+
+const customStyles = {
+    content: {
+        top: '40px',
+        left: '0',
+        right: '0',
+        bottom: '0',
+    },
+};
+
 class App extends Component {
     constructor() {
         super();
@@ -33,64 +43,66 @@ class App extends Component {
         modalIsOpen: false,
     };
 
-    async componentDidMount() {
-        try {
-            this.tracker.createTracker();
-            this.tracker.startTracker(1);
+    // async componentDidMount() {
+    //     try {
+    //         const id = await this.tracker.createTracker();
 
-            const response = await fetch('/api/trace');
-            const messages = await response.json();
-            this.setState({ messages });
-        } catch (e) {
-            console.error(e);
-        }
-    }
+    //         this.tracker.startTracker(id);
+
+    //         const response = await fetch('/api/trace');
+    //         const messages = await response.json();
+    //         this.setState({ messages });
+    //     } catch (e) {
+    //         console.error(e);
+    //     }
+    // }
 
     render() {
         const { tracker } = this.state;
         const [id, long, lang] = Object.values(tracker);
 
-        if (!long && !lang) {
-            return (
-                <>
-                    <figure
-                        style={{
-                            position: 'absolute',
-                            zIndex: '1',
-                            background: 'rgba(255,255,255,0.5)',
-                            width: '100%',
-                            height: '100%',
-                            textAlign: 'center',
-                            margin: 0,
-                        }}
-                    >
-                        <img src={loader} alt="loader" />
-                    </figure>
-                </>
-            );
-        }
+        // if (!long && !lang) {
+        //     return (
+        //         <>
+        //             <figure
+        //                 style={{
+        //                     position: 'absolute',
+        //                     zIndex: '1',
+        //                     background: 'rgba(255,255,255,0.5)',
+        //                     width: '100%',
+        //                     height: '100%',
+        //                     textAlign: 'center',
+        //                     margin: 0,
+        //                 }}
+        //             >
+        //                 <img src={loader} alt="loader" />
+        //             </figure>
+        //         </>
+        //     );
+        // }
 
         return (
             <div>
                 <button onClick={this.openModal}>Open Modal</button>
 
-                <MyMap
+                {/* <MyMap
                     latLngArr={[
                         [lang, long],
                         [52.4, 4.7],
                         [52.42, 4.75],
                         [52.45, 4.66],
                     ]}
-                />
-                <CSSTransitionGroup
-                    transitionName="slide"
-                    transitionAppear={this.state.modalIsOpen}
-                    transitionAppearTimeout={500}
-                    transitionEnterTimeout={300}
-                    transitionLeaveTimeout={300}
+                /> */}
+                <Modal
+                    isOpen={this.state.modalIsOpen}
+                    onRequestClose={this.closeModal}
+                    contentLabel="Example Modal"
+                    style={customStyles}
                 >
+                    <button onClick={this.closeModal}>Close Modal</button>
+                    <DriverInformation />
                     <RatingComponent />
-                </CSSTransitionGroup>
+                </Modal>
             </div>
         );
     }
