@@ -6,10 +6,7 @@ import Modal from 'react-modal';
 import { RatingComponent } from './components/rating/rating';
 import { DriverInformation } from './components/rating/driverInformation';
 
-// import './app.scss';
-
-
-import { Schedule } from './components/schedule/schedule';
+import './App.css';
 
 Modal.setAppElement('#root');
 
@@ -44,13 +41,48 @@ class App extends Component {
         modalIsOpen: false,
     };
 
+    async componentDidMount() {
+        try {
+            const id = await this.tracker.createTracker();
+
+            this.tracker.startTracker(id);
+
+            const response = await fetch('/api/trace');
+            const messages = await response.json();
+            this.setState({ messages });
+        } catch (e) {
+            console.error(e);
+        }
+    }
+
     render() {
         const { tracker } = this.state;
         const [id, long, lang] = Object.values(tracker);
 
+        if (!long && !lang) {
+            return (
+                <>
+                    <figure
+                        style={{
+                            position: 'absolute',
+                            zIndex: '1',
+                            background: 'rgba(255,255,255,0.5)',
+                            width: '100%',
+                            height: '100%',
+                            textAlign: 'center',
+                            margin: 0,
+                        }}
+                    >
+                        <img src={loader} alt="loader" />
+                    </figure>
+                </>
+            );
+        }
+
         return (
             <div>
                 <button onClick={this.openModal}>Open Modal</button>
+
                 <MyMap
                     latLngArr={[
                         [lang, long],
@@ -59,7 +91,6 @@ class App extends Component {
                         [52.45, 4.66],
                     ]}
                 />
-                <Schedule />
                 <Modal
                     isOpen={this.state.modalIsOpen}
                     onRequestClose={this.closeModal}
