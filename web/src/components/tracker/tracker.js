@@ -1,8 +1,11 @@
-import { getDistanceFromLatLonInKm } from '../my-map/my-map';
 const mock = require('./mockData');
 
 export default class Tracker {
     constructor() {
+        this.host =
+            process.env.NODE_ENV === 'production'
+                ? 'https://ubertrace-api-npsrvduhwn.now.sh/api/trace'
+                : '';
         this.mock = mock;
     }
 
@@ -20,7 +23,11 @@ export default class Tracker {
     createTracker() {
         return setTimeout(
             () =>
-                this.fetch('/api/trace', 'POST', JSON.stringify(this.mock[0])),
+                this.fetch(
+                    this.host + '/api/trace',
+                    'POST',
+                    JSON.stringify(this.mock[0]),
+                ),
             1000,
         );
     }
@@ -51,7 +58,7 @@ export default class Tracker {
         setTimeout(
             () =>
                 this.fetch(
-                    `/api/trace?id=1`,
+                    this.host + `/api/trace?id=1`,
                     'PUT',
                     JSON.stringify(location),
                 ),
@@ -71,6 +78,8 @@ export default class Tracker {
             totalRoute.push(...steps);
         });
 
-        totalRoute.forEach((location, idx) => this.getGeoLocation(location, idx));
+        totalRoute.forEach((location, idx) =>
+            this.getGeoLocation(location, idx),
+        );
     }
 }

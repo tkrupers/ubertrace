@@ -48,8 +48,12 @@ class App extends Component {
             const id = await this.tracker.createTracker();
 
             this.tracker.startTracker(id);
+            const url =
+                process.env.NODE_ENV === 'production'
+                    ? 'https://ubertrace-api-npsrvduhwn.now.sh/api/trace'
+                    : '/api/trace';
 
-            const response = await fetch('/api/trace');
+            const response = await fetch(url);
             const messages = await response.json();
             this.setState({ messages });
         } catch (e) {
@@ -99,7 +103,8 @@ class App extends Component {
                             boxShadow:
                                 ' 0 15px 35px rgba(50,50,93,.7), 0 5px 15px rgba(0,0,0,.07)',
                             transform: `${
-                                this.state.scheduleOpen || this.state.modalIsOpen
+                                this.state.scheduleOpen ||
+                                this.state.modalIsOpen
                                     ? 'translateY(-110px)'
                                     : 'translateY(0)'
                             }`,
