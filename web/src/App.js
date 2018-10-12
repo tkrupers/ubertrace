@@ -89,9 +89,10 @@ class App extends Component {
                                 display: 'flex',
                                 flexDirection: 'row',
                                 background: '#FFF',
-                                width: '70%',
+                                width: '90%',
                                 margin: 'auto',
-                                padding: '15px 0',
+                                padding: '15px 10px',
+                                justifyContent: 'space-between',
                                 boxShadow:
                                     ' 0 15px 35px rgba(50,50,93,.7), 0 5px 15px rgba(0,0,0,.07)',
                             } // height: '4em',
