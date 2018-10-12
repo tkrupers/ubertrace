@@ -9,7 +9,7 @@ const MyMarkersList = ({ markers }) => {
     return <Fragment>{items}</Fragment>;
 };
 
-export class DivIconMarkerExample extends Component {
+export class MyMap extends Component {
     state = {
         markers: [
             {

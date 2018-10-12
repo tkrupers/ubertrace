@@ -1,9 +1,9 @@
 import React, { Component } from 'react';
-import { DivIconMarkerExample } from './components/divicon-marker-example';
+import { MyMap } from './components/my-map';
 
 class App extends Component {
     render() {
-        return <DivIconMarkerExample />;
+        return <MyMap />;
     }
 }
 
