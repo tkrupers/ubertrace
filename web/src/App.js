@@ -30,20 +30,20 @@ class App extends Component {
         modalIsOpen: false,
     };
 
-    async componentDidMount() {
-        try {
-            const res = await this.tracker.createTracker();
-            const tracker = await res.json();
+    // async componentDidMount() {
+    //     try {
+    //         const res = await this.tracker.createTracker();
+    //         const tracker = await res.json();
 
-            this.tracker.startTracker(tracker.id);
+    //         this.tracker.startTracker(tracker.id);
 
-            const response = await fetch('/api/trace');
-            const messages = await response.json();
-            this.setState({ messages });
-        } catch (e) {
-            console.error(e);
-        }
-    }
+    //         const response = await fetch('/api/trace');
+    //         const messages = await response.json();
+    //         this.setState({ messages });
+    //     } catch (e) {
+    //         console.error(e);
+    //     }
+    // }
 
     render() {
         const { tracker } = this.state;
@@ -54,9 +54,6 @@ class App extends Component {
                 <button onClick={this.openModal}>Open Modal</button>
 
                 <MyMap
-                    style={{
-                        zIndex: 0,
-                    }}
                     latLngArr={[
                         lang && long ? [lang, long] : [50.4, 4.7],
                         [52.4, 4.7],
@@ -69,6 +66,8 @@ class App extends Component {
                     onRequestClose={this.closeModal}
                     contentLabel="Example Modal"
                 >
+                    <button onClick={this.closeModal}>Close Modal</button>
+
                     <RatingComponent />
                 </Modal>
             </div>
