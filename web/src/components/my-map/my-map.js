@@ -37,7 +37,7 @@ const getAngle = latLngArr => {
         latLngArr[0][1],
     );
 
-    return Math.atan2(y, x) * 180 / Math.PI - 90;
+    return (Math.atan2(y, x) * 180) / Math.PI - 90;
 };
 
 const MyMarkersList = ({ markers }) => {
