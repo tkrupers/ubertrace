@@ -4,6 +4,7 @@ import Tracker from './components/tracker/tracker';
 import { subscribeToTracker } from './api';
 import Modal from 'react-modal';
 import { RatingComponent } from './components/rating/rating';
+import './App.css';
 
 Modal.setAppElement('#root');
 
