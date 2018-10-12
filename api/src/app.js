@@ -13,7 +13,10 @@ app.use(express.urlencoded({ extended: true }));
 app.configure(express.rest());
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
-app.use(cors());
+app.use(cors({
+  origin: 'https://uber-trace-web.now.sh',
+  credentials: true,
+}));
 app.configure(socketio(3031));
 
 app.use(express.errorHandler());
