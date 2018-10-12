@@ -4,6 +4,9 @@ import './schedule.css';
 export const Schedule = () => {
     return (
         <section className="schedule">
+          <div className="schedule__toggle">
+              <div className="schedule__toggle-button"/>
+          </div>
             <div className="schedule__dot-line">
                 <div className="schedule__dot">
                     <div className="schedule__info">

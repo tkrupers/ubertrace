@@ -8,6 +8,9 @@ import { DriverInformation } from './components/rating/driverInformation';
 
 // import './app.scss';
 
+
+import { Schedule } from './components/schedule/schedule';
+
 Modal.setAppElement('#root');
 
 const loader = require('./components/assets/loadering.gif');
@@ -48,7 +51,15 @@ class App extends Component {
         return (
             <div>
                 <button onClick={this.openModal}>Open Modal</button>
-
+                <MyMap
+                    latLngArr={[
+                        [lang, long],
+                        [52.4, 4.7],
+                        [52.42, 4.75],
+                        [52.45, 4.66],
+                    ]}
+                />
+                <Schedule />
                 <Modal
                     isOpen={this.state.modalIsOpen}
                     onRequestClose={this.closeModal}
