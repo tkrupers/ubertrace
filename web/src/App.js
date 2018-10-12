@@ -81,8 +81,41 @@ class App extends Component {
 
         return (
             <div>
-                <button onClick={this.openModal}>Open Modal</button>
-
+                {/* <button onClick={this.openModal}>Open Modal</button> */}
+                <div className="deliveryStatus">
+                    <div
+                        style={
+                            {
+                                display: 'flex',
+                                flexDirection: 'row',
+                                background: '#FFF',
+                                width: '70%',
+                                margin: 'auto',
+                                padding: '15px 0',
+                                boxShadow:
+                                    ' 0 15px 35px rgba(50,50,93,.7), 0 5px 15px rgba(0,0,0,.07)',
+                            } // height: '4em',
+                        }
+                    >
+                        <div className="status-row">
+                            <p className="small">AANKOMST</p>
+                            <p>16:45</p>
+                        </div>
+                        <div className="status-row">
+                            <p className="small">KLANTEN VOOR U</p>
+                            <p>2</p>
+                        </div>
+                        <div
+                            className="status-row"
+                            style={{
+                                marginTop: '13px',
+                                color: '#5AB0FD',
+                            }}
+                        >
+                            <p>Tips</p>
+                        </div>
+                    </div>
+                </div>
                 <MyMap
                     latLngArr={[
                         [lang, long],
