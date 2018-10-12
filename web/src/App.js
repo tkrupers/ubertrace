@@ -5,6 +5,9 @@ import { Rating } from './screens/rate';
 import Tracker from './components/tracker/tracker';
 import { subscribeToTracker } from './api';
 import Modal from 'react-modal';
+import { RatingComponent } from './components/rating/rating';
+
+Modal.setAppElement('#root');
 
 class App extends Component {
     constructor() {
@@ -13,10 +16,18 @@ class App extends Component {
         this.tracker = new Tracker();
     }
 
+    openModal = () => {
+        this.setState({ modalIsOpen: true });
+    };
+
+    closeModal = () => {
+        this.setState({ modalIsOpen: false });
+    };
+
     state = {
         messages: [],
         tracker: {},
-        isOpen: false,
+        modalIsOpen: false,
     };
 
     async componentDidMount() {
@@ -39,14 +50,28 @@ class App extends Component {
         const [id, long, lang] = Object.values(tracker);
 
         return (
-            <MyMap
-                latLngArr={[
-                    lang && long ? [lang, long] : [50.4, 4.7],
-                    [52.4, 4.7],
-                    [52.42, 4.75],
-                    [52.45, 4.66],
-                ]}
-            />
+            <div>
+                <button onClick={this.openModal}>Open Modal</button>
+
+                <MyMap
+                    style={{
+                        zIndex: 0,
+                    }}
+                    latLngArr={[
+                        lang && long ? [lang, long] : [50.4, 4.7],
+                        [52.4, 4.7],
+                        [52.42, 4.75],
+                        [52.45, 4.66],
+                    ]}
+                />
+                <Modal
+                    isOpen={this.state.modalIsOpen}
+                    onRequestClose={this.closeModal}
+                    contentLabel="Example Modal"
+                >
+                    <RatingComponent />
+                </Modal>
+            </div>
         );
     }
 }
