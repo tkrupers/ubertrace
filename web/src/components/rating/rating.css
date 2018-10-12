@@ -1,0 +1,27 @@
+.driver-information {
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+    align-items: center;
+    padding-bottom: 32px;
+    border-bottom: 0.5px solid #cccccc;
+}
+
+.driver-information p {
+    margin: 0;
+}
+
+.send-button {
+    bottom: 32px;
+    background: #5ab0fd;
+    border: none;
+    margin: 0;
+    padding: 0;
+    width: auto;
+    overflow: visible;
+    -webkit-appearance: none;
+    color: white;
+    width: 100%;
+    padding: 20px;
+    border-radius: 3px;
+}

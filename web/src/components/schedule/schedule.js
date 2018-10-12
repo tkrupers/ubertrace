@@ -24,7 +24,10 @@ export class Schedule extends React.Component {
                     <div
                         className="schedule__toggle-button"
                         onClick={() =>
-                            this.setState({ isOpen: !this.state.isOpen })
+                            {
+                                this.props.scheduleOpen();
+                                this.setState({ isOpen: !this.state.isOpen })
+                            }
                         }
                     ><i className={`fas fa-chevron-circle-${this.state.isOpen ? 'down' : 'up'}`}></i></div>
                 </div>
