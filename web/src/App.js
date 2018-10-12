@@ -1,7 +1,8 @@
 import React, { Component } from 'react';
-
-import Tracker from './components/tracker/tracker';
 import { MyMap } from './components/my-map/my-map';
+import { Router } from '@reach/router';
+import { Rating } from './screens/rate';
+import Tracker from './components/tracker/tracker';
 import { subscribeToTracker } from './api';
 class App extends Component {
     constructor() {
@@ -34,30 +35,19 @@ class App extends Component {
         const { tracker } = this.state;
         const [id, long, lang] = Object.values(tracker);
 
-        if (!lang && !long) {
-            return (
+        return (
+            <Router>
                 <MyMap
                     latLngArr={[
-                        [50.4, 4.7],
+                        lang && long ? [lang, long] : [50.4, 4.7],
                         [52.4, 4.7],
                         [52.42, 4.75],
                         [52.45, 4.66],
                     ]}
                 />
-            );
-        }
-        if (lang && long) {
-            return (
-                <MyMap
-                    latLngArr={[
-                        [lang, long],
-                        [52.4, 4.7],
-                        [52.42, 4.75],
-                        [52.45, 4.66],
-                    ]}
-                />
-            );
-        }
+                <Rating path="rating" />
+            </Router>
+        );
     }
 }
 
