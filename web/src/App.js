@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
-import { DivIconMarkerExample } from './components/divicon-marker-example';
+
 import Tracker from './components/Tracker/Tracker';
+import { MyMap } from './components/my-map/my-map';
 
 class App extends Component {
     state = {
@@ -20,7 +21,7 @@ class App extends Component {
     }
 
     render() {
-        return <DivIconMarkerExample />;
+        return <MyMap latLngArr={[[51.52, -0.05], [51.5, -0.1], [51.51, -0.1], [51.49, -0.05]]} />;
     }
 }
 
