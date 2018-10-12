@@ -1,0 +1,35 @@
+.driver {
+    display: flex;
+    width: 100%;
+    border-bottom: 1px solid #eee;
+    cursor: pointer;
+}
+
+.driver__avatar {
+    flex: 1;
+    margin-left: 0;
+}
+
+.driver__avatar img {
+    border-radius: 50%;
+}
+
+.driver__meta {
+    flex: 2;
+    margin: auto;
+}
+
+.driver__meta h4 {
+    margin: 0;
+    color: #ccc;
+}
+
+.driver__meta .fa-star {
+    color: orange;
+}
+
+.driver__caret {
+    flex: 0;
+    margin: auto;
+    color: #ccc;
+}

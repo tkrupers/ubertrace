@@ -1,54 +1,45 @@
 import React from 'react';
+import { Timeline } from './timeline/timeline';
+import { Driver } from '../driver/driver';
 import './schedule.css';
 
-export const Schedule = () => {
-    return (
-        <section className="schedule">
-          <div className="schedule__toggle">
-              <div className="schedule__toggle-button"/>
-          </div>
-            <div className="schedule__dot-line">
-                <div className="schedule__dot">
-                    <div className="schedule__info">
-                        <p className="schedule__paragraph">
-                            Vertrokken uit distributiecentrum
-                        </p>
-                        <p className="schedule__paragraph schedule__paragraph--time">
-                            15:00
-                        </p>
-                    </div>
+export class Schedule extends React.Component {
+    state = {
+        isOpen: false,
+    };
+
+    render() {
+        const { openModal } = this.props;
+
+        return (
+            <section
+                className="schedule"
+                style={{
+                    transform: this.state.isOpen
+                        ? 'translateY(0px)'
+                        : 'translateY(400px)',
+                }}
+            >
+                <div className="schedule__toggle">
+                    <div
+                        className="schedule__toggle-button"
+                        onClick={() =>
+                            this.setState({ isOpen: !this.state.isOpen })
+                        }
+                    ><i className={`fas fa-chevron-circle-${this.state.isOpen ? 'down' : 'up'}`}></i></div>
                 </div>
-                <div className="schedule__line" />
-                <div className="schedule__dot">
-                    <div className="schedule__info">
-                        <p className="schedule__paragraph">Klant 1</p>
-                        <p className="schedule__paragraph schedule__paragraph--time">
-                            15:30
-                        </p>
+                <div className="schedule__content">
+                    <div onClick={openModal}>
+                        <Driver />
                     </div>
+
+                    <Timeline />
+
+                    <button className="button button-primary">
+                        bericht sturen
+                    </button>
                 </div>
-                <div className="schedule__line schedule__line--half" />
-                <div className="schedule__line schedule__line--half schedule__line--grey" />
-                <div className="schedule__dot schedule__dot--grey">
-                    <div className="schedule__info">
-                        <p className="schedule__paragraph">Klant 2</p>
-                        <p className="schedule__paragraph schedule__paragraph--time">
-                            16:00
-                        </p>
-                    </div>
-                </div>
-                <div className="schedule__line schedule__line--grey" />
-                <div className="schedule__dot schedule__dot--black schedule__dot--square">
-                    <div className="schedule__info">
-                        <p className="schedule__paragraph">
-                            Aflevering op lokatie
-                        </p>
-                        <p className="schedule__paragraph schedule__paragraph--time">
-                            16:00
-                        </p>
-                    </div>
-                </div>
-            </div>
-        </section>
-    );
-};
+            </section>
+        );
+    }
+}

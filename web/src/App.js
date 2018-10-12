@@ -72,8 +72,6 @@ class App extends Component {
 
         return (
             <div>
-                <button onClick={this.openModal}>Open Modal</button>
-
                 <MyMap
                     latLngArr={[
                         [lang, long],
@@ -82,13 +80,15 @@ class App extends Component {
                         [52.45, 4.66],
                     ]}
                 />
-                <Schedule />
+
+                <Schedule openModal={this.openModal} />
+
                 <Modal
                     isOpen={this.state.modalIsOpen}
                     onRequestClose={this.closeModal}
                     contentLabel="Example Modal"
                 >
-                    <button onClick={this.closeModal}>Close Modal</button>
+                    <button style={{float: 'right'}} onClick={this.closeModal}><i className="fas fa-times" style={{fontSize: '24px'}}/></button>
 
                     <RatingComponent />
                 </Modal>

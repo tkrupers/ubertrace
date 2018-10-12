@@ -70,8 +70,8 @@ export const MyMap = ({ latLngArr }) => {
     return (
         <Map
             center={latLngArr[0]}
-            zoom={11}
-            style={{ height: '200px', zIndex: 0 }}
+            zoom={10}
+            style={{ height: 'calc(100vh - 200px)', zIndex: 0 }}
         >
             <TileLayer
                 attribution="&amp;copy <a href=&quot;http://osm.org/copyright&quot;>OpenStreetMap</a> contributors"
