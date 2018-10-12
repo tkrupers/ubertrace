@@ -1,47 +1,52 @@
 import React, { Component } from 'react';
 import { MyMap } from './components/my-map/my-map';
-import { Router, Link } from '@reach/router';
+import { Router } from '@reach/router';
 import { Rating } from './screens/rate';
+import Tracker from './components/tracker/tracker';
+import { subscribeToTracker } from './api';
 import Modal from 'react-modal';
-import { RatingComponent } from './components/rating/rating';
-
-// Make sure to bind modal to your appElement (http://reactcommunity.org/react-modal/accessibility/)
-Modal.setAppElement('#root');
 
 class App extends Component {
+    constructor() {
+        super();
+        subscribeToTracker((err, data) => this.setState({ tracker: data }));
+        this.tracker = new Tracker();
+    }
+
     state = {
-        modalIsOpen: false,
-    };
-    openModal = () => {
-        this.setState({ modalIsOpen: true });
+        messages: [],
+        tracker: {},
+        isOpen: false
     };
 
-    closeModal = () => {
-        this.setState({ modalIsOpen: false });
-    };
+    async componentDidMount() {
+        try {
+            const res = await this.tracker.createTracker();
+            const tracker = await res.json();
+
+            this.tracker.startTracker(tracker.id);
+
+            const response = await fetch('/api/trace');
+            const messages = await response.json();
+            this.setState({ messages });
+        } catch (e) {
+            console.error(e);
+        }
+    }
 
     render() {
+        const { tracker } = this.state;
+        const [id, long, lang] = Object.values(tracker);
+
         return (
-            <div>
-                <button onClick={this.openModal}>Open Modal</button>
-                <Modal
-                    isOpen={this.state.modalIsOpen}
-                    onRequestClose={this.closeModal}
-                    contentLabel="Example Modal"
-                >
-                    <button onClick={this.closeModal}>close</button>
-                    <RatingComponent />
-                </Modal>
-                <MyMap
-                    path="/"
-                    latLngArr={[
-                        [51.52, -0.05],
-                        [51.5, -0.1],
-                        [51.51, -0.1],
-                        [51.49, -0.05],
-                    ]}
-                />
-            </div>
+            <MyMap
+                latLngArr={[
+                    lang && long ? [lang, long] : [50.4, 4.7],
+                    [52.4, 4.7],
+                    [52.42, 4.75],
+                    [52.45, 4.66],
+                ]}
+            />
         );
     }
 }
