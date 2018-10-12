@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { MyMap } from './components/my-map';
+import { MyMap } from './components/my-map/my-map';
 
 class App extends Component {
     render() {
