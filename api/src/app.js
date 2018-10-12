@@ -4,6 +4,7 @@ const feathers = require('@feathersjs/feathers');
 const express = require('@feathersjs/express/lib');
 const socketio = require('@feathersjs/socketio/lib');
 const bodyParser = require('body-parser');
+const cors = require('cors');
 
 const app = express(feathers());
 
@@ -12,7 +13,7 @@ app.use(express.urlencoded({ extended: true }));
 app.configure(express.rest());
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
-
+app.use(cors());
 app.configure(socketio(3031));
 
 app.use(express.errorHandler());
