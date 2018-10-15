@@ -46,7 +46,6 @@ class App extends Component {
     async componentDidMount() {
         try {
             const id = await this.tracker.createTracker();
-
             this.tracker.startTracker(id);
             const url =
                 process.env.NODE_ENV === 'production'
@@ -168,6 +167,7 @@ class App extends Component {
                     </button>
 
                     <RatingComponent />
+
                     <button className="send-button" onClick={this.closeModal}>
                         versturen
                     </button>

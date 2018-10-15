@@ -1,5 +1,7 @@
 import React from 'react';
 import { Driver } from '../driver/driver';
+import './rating.css';
+
 const star = require('../../components/assets/icon--star--filled.svg');
 const starFilled = require('../../components/assets/icon--star.svg');
 
@@ -54,7 +56,7 @@ export const RatingComponent = () => {
             }}
         >
             <p>Rate your driver</p>
-            <Driver noCaret/>
+            <Driver noCaret />
             <Stars />
         </div>
     );

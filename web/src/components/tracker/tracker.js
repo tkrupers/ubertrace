@@ -22,7 +22,7 @@ export default class Tracker {
             body,
         });
 
-    createTracker() {
+createTracker() {
         return setTimeout(
             () =>
                 this.fetch(

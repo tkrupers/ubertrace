@@ -56,7 +56,7 @@ const MyMarkersList = ({ markers }) => {
                 key={index}
                 center={latLng}
                 radius={8}
-                color="#3b9fe2"
+                color={ index === 2 ? '#333' : '#3b9fe2'}
                 weight={7}
                 fillColor="#fff"
                 fillOpacity={1}
